@@ -5,7 +5,7 @@
                 <div class="col-6 col-sm-4 col-md-3 col-lg-3">
                     <div class="logo" style="margin-top:8px;">
                         <a href="{{ url('/') }}">
-                            <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" >
+                            <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->black_logo }}" alt="Logo" >
                         </a>
                     </div>
                 </div>

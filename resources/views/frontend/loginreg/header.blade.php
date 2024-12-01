@@ -163,7 +163,7 @@
                         </a>
                     </h5> --}}
                     <a href="{{ url('/') }}" style="text-align:center;">
-                        <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" >
+                        <img width="120px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" >
                     </a>
                 </div>
                 @if(Auth::guard('customer')->user())
