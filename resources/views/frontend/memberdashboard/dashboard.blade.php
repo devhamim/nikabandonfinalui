@@ -8,7 +8,6 @@
 
                     <link href="{{ asset('frontend') }}/css/Pages/mypage-index.css" rel="stylesheet" />
 
-
                     <style type="text/css">
                         .mypage-menu-active {
                             background-color: #f2f2f2;
@@ -341,7 +340,7 @@
                                                             <div id="mypage-matches_homeDistrict" class="slider slick-initialized slick-slider">
                                                                 <div class="row">
                                                                     @foreach($recentmember as $key => $member)
-                                                                        <div class="col-lg-3">
+                                                                        <div class="col-lg-3 col-6 py-3">
                                                                             <div class="grid-item" style="width: 168px;"> 
                                                                                 <a style="text-decoration: none;" href="{{ route('member.profile', $member->username) }}" tabindex="-1">
                                                                                     <div class="grid-item-image text-center">
