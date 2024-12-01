@@ -245,6 +245,11 @@
                         </a>
                     </span>
                     <span class="menu-item-help" style="padding-left:30px; cursor: pointer;">
+                        <a class="header-text" href="{{ route('premium.package') }}">
+                            <span>Packages</span>
+                        </a>
+                    </span>
+                    <span class="menu-item-help" style="padding-left:30px; cursor: pointer;">
                         <a class="header-text" href="{{ route('mission.vision') }}">
                             <span>Mission Vision</span>
                         </a>

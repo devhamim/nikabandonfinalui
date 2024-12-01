@@ -60,6 +60,13 @@
                         <span class="nav-text">Experience</span>
                     </a>
                 </li>
+                <!-- Payment list -->
+                <li>
+                    <a class="sidenav-item-link" href="{{ route('payment.index') }}">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="nav-text">Payment</span>
+                    </a>
+                </li>
                 <!-- Premium Package list -->
                 <li>
                     <a class="sidenav-item-link" href="{{ route('package.index') }}">

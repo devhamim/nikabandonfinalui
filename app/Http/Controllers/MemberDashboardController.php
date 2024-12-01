@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\package;
+use App\Models\PaymentMethord;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -128,6 +129,33 @@ class MemberDashboardController extends Controller
         return view('frontend.memberdashboard.packageview',[
             'packages'=>$packages,
         ]);
+    }
+
+    // payment_view
+    function payment_view($id){
+        $packages = package::where('id', $id)->first();
+        return view('frontend.memberdashboard.paymentmethode',[
+            'packages'=>$packages,
+        ]);
+    }
+
+    //payment_methode_store
+    function payment_methode_store(Request $request){
+        $validatedData = $request->validate([
+            'packages' => 'required',
+            'name' => 'required',
+            'payment' => 'nullable',
+            'number' => 'nullable',
+            'trxid' => 'nullable',
+            'message' => 'nullable',
+        ]);
+        $user = Auth::guard('customer')->user();
+        if(!$user){
+            return redirect('/');
+        }
+        PaymentMethord::create($validatedData);
+    
+        return redirect('/')->with('success', 'successfully!');
     }
 
 }

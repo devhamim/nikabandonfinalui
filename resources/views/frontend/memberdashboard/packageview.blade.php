@@ -91,7 +91,7 @@
                                                 </ul>
                                             </div>
                                             <div class="plan-signup">
-                                                <a id="plan-bronze" href="#yourPlan" class="bm-button theme-backcolor">&nbsp; Select &nbsp;</a>
+                                                <a id="plan-bronze" href="{{ route('payment.view', $package->id) }}" class="bm-button theme-backcolor">&nbsp; Select &nbsp;</a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -103,7 +103,7 @@
 
                     <br />
 
-                    <div class="paymenttype-section-mobile" style="background-color: #fff; padding: 30px; border:2px dashed #dcdcdc; margin-left: 5px; margin-right: 5px;">
+                    <div class="paymenttype-section-mobile" id="yourPlan" style="background-color: #fff; padding: 30px; border:2px dashed #dcdcdc; margin-left: 5px; margin-right: 5px;">
                         {{-- <div style="padding-top:10px; padding-bottom:30px;">
                             <div class="payment-type-header">Payment Online</div>
                             <div>

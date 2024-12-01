@@ -211,15 +211,29 @@
                                             </div>
                                         </div>
                                         <div style="background-color: #dcdcdc; border: 1px solid #ccc; padding: 10px; padding-bottom: 16px; ">
-                                            <a id="btnSendMessage" ng-click="sendMessage()" class="bm-button" style="padding:7px; position:relative; top:2px; background-color: #c0272c;">
-                                                <i class="icon-mail" style="color:#fff; font-size: 1.3em; position:relative; top: 2px;"></i>Send Message
-                                            </a>
-                                            <a id="btnSendInterest" class="bm-button detail-page-action-btn" ng-click="sendInterest()" style="margin-left:7px; background-color: #c0272c;">
-                                                <i class="icon-thumbs-up-1"></i>I am Interested
-                                            </a>
-                                            <a id="btnFavorite" class="bm-button detail-page-action-btn" ng-click="saveFavoriteUser()" style="margin-left:7px; background-color: #c0272c;">
-                                                <i class="icon-star"></i>Add to Favorite
-                                            </a>
+                                            @if(Auth::guard('customer')->user()->pay_active == 1)
+                                                <a href="{{ route('premium.package') }}" id="btnSendInterest" class="bm-button detail-page-action-btn" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-mail"></i>Send Message
+                                                </a>
+                                                <a id="btnSendInterest" class="bm-button detail-page-action-btn" ng-click="sendInterest()" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-thumbs-up-1"></i>I am Interested
+                                                </a>
+                                                <a id="btnFavorite" class="bm-button detail-page-action-btn" ng-click="saveFavoriteUser()" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-star"></i>Add to Favorite
+                                                </a>
+                                            @else
+                                                
+                                                <a href="{{ route('premium.package') }}" id="btnSendInterest" class="bm-button detail-page-action-btn" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-mail"></i>Send Message
+                                                </a>
+                                                <a href="{{ route('premium.package') }}" id="btnSendInterest" class="bm-button detail-page-action-btn" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-thumbs-up-1"></i>I am Interested
+                                                </a>
+                                                <a href="{{ route('premium.package') }}" id="btnFavorite" class="bm-button detail-page-action-btn" style="margin-left:7px; background-color: #c0272c;">
+                                                    <i class="icon-star"></i>Add to Favorite
+                                                </a>
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                     <div class="shadow" style="margin-top: 30px; background-color: #fff;">

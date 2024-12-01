@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberDashboardController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentMethodeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ReviewController;
@@ -73,6 +74,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('videos', VideoController::class);
     Route::resource('album', AlbumController::class);
     Route::resource('package', PackageController::class);
+    Route::resource('payment', PaymentMethodeController::class);
 
     // addtional page
     Route::resource('about', AboutController::class);
@@ -112,5 +114,7 @@ Route::group(['prefix' => 'member'], function(){
     Route::get('/partner/preferance/view', [MemberDashboardController::class, 'partner_preferance_view'])->name('partner.preferance.view');
     Route::post('/partner/preferences/update', [MemberDashboardController::class, 'partner_preferences_update'])->name('partner.preferences.update');
     Route::get('/premium/package', [MemberDashboardController::class, 'premium_package'])->name('premium.package');
+    Route::get('/payment/view/{id}', [MemberDashboardController::class, 'payment_view'])->name('payment.view');
+    Route::post('/payment/methode/store', [MemberDashboardController::class, 'payment_methode_store'])->name('payment.methode.store');
 });
 

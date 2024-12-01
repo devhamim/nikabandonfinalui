@@ -4,7 +4,7 @@
     <div class="custom-container container pos-relative home-search-container">
         <div class="hero-content">
             <div class="slider-text">                        
-                <h1 class="slider-heading">Most Trusted & Secured <br /> Marriage Media Site in Bangladesh</h1>
+                <h1 class="slider-heading">Most Trusted & Secured <br /> Matrimony Site in Bangladesh</h1>
             </div>
         </div>
         <div class="hero-form">
