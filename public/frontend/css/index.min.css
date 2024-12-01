@@ -14903,11 +14903,11 @@ ul {
 }
 
 .main-color {
-    color: #e21190
+    color: #d90055
 }
 
 .main-color-bg {
-    background-color: #e21190
+    background-color: #d90055
 }
 
 .bg-dark {
@@ -14987,11 +14987,11 @@ ul {
 
 .call-us:hover .call-us-text span,
 .call-us:hover .call-us-text a {
-    color: #e21190;
+    color: #d90055;
 }
 
 .call-us-text a:hover {
-    color: #e21190;
+    color: #d90055;
 }
 
 .call-us .icon {
@@ -14999,8 +14999,8 @@ ul {
 }
 
 .call-us .icon i {
-    color: #e21190;
-    border: 1px solid #e21190;
+    color: #d90055;
+    border: 1px solid #d90055;
     padding: 4px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -15010,7 +15010,7 @@ ul {
 
 .call-us:hover .icon i {
     color: #fff;
-    background: #e21190;
+    background: #d90055;
 }
 
 .header-menu {
@@ -15040,7 +15040,7 @@ ul {
 }
 
 .header-top {
-    background: #e21190;
+    background: #d90055;
     min-height: 31px;
     display: flex;
     justify-content: center;
@@ -15053,7 +15053,7 @@ ul {
 }
 
 .top-phone i {
-    color: #e21190;
+    color: #d90055;
     font-size: 22px;
 }
 
@@ -15101,7 +15101,7 @@ ul {
 }
 
 .navigation .dropdown-items li a:hover {
-    color: #e21190;
+    color: #d90055;
 }
 
 .navigation .dropdown-items li a {
@@ -15132,7 +15132,7 @@ ul {
     position: absolute;
     width: calc(100% - 26px);
     height: 1px;
-    background: #e21190;
+    background: #d90055;
     left: 13px;
     bottom: 6px;
     opacity: 0;
@@ -15152,7 +15152,7 @@ ul {
 .hamburger-btn {
     width: 28px;
     height: 27px;
-    background-color: #e21190;
+    background-color: #d90055;
     padding: 4px 5px;
     display: none;
     flex-wrap: wrap;
@@ -15318,7 +15318,7 @@ ul {
 }
 
 .price-box.pricing-two {
-    background-color: #e21190;
+    background-color: #d90055;
     color: #fff;
     padding: 70px 50px;
     /* background-image: url(../images/flower-bg.svg); */
@@ -15355,7 +15355,7 @@ ul {
 
 .price-box.pricing-two .btn-square {
     background-color: #fff;
-    color: #e21190;
+    color: #d90055;
 }
 
 .price-box.pricing-two .btn-square:hover {
@@ -15377,7 +15377,7 @@ ul {
 }
 
 /*.card-one:hover {
-    border: solid 1px #e21190;
+    border: solid 1px #d90055;
 }*/
 
 .card-one .card-heading {
@@ -15414,7 +15414,7 @@ ul {
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: FontAwesome;
-    color: #e21190;
+    color: #d90055;
 }
 
 .area-bg-left {
@@ -15454,7 +15454,7 @@ ul {
 }
 
 .nav-tabs .nav-link:hover {
-    border-bottom: 2px solid #e21190;
+    border-bottom: 2px solid #d90055;
 }
 
 .nav-tabs {
@@ -15465,7 +15465,7 @@ ul {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-    color: #e21190;
+    color: #d90055;
 }
 
 .round-list {
@@ -15504,7 +15504,7 @@ ul {
 
 .cta .btn-square {
     background-color: #ffffff;
-    color: #e21190;
+    color: #d90055;
     font-weight: 700;
 }
 
@@ -15718,7 +15718,7 @@ ul {
 }
 
 /*#return-to-top {
-    background: #e21190;
+    background: #d90055;
     bottom: 20px;
     cursor: pointer;
     display: none;
@@ -15919,7 +15919,7 @@ ul.pl-2.nav {
     padding: 20px 50px;
     border-radius: 5px;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.07);
-    background-color: #e21190;
+    background-color: #d90055;
     /* background-image: url(../images/flower-bg.svg); */
     background-repeat: no-repeat;
     background-position: right top;
@@ -15951,8 +15951,8 @@ ul.pl-2.nav {
 }
 
 .btn-login i {
-    color: #e21190;
-    border: 1px solid #e21190;
+    color: #d90055;
+    border: 1px solid #d90055;
     padding: 4px;
     border-radius: 4px;
     transition: all .3s;
@@ -16720,7 +16720,7 @@ ul.pl-2.nav {
 .home-slider .grid-item-info>.title {
     font-size: 22px;
     font-weight: 500;
-    color: #e21190;
+    color: #d90055;
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -16872,7 +16872,7 @@ ul.pl-2.nav {
 }
 
 .footer-icon i {
-    color: #e21190;
+    color: #d90055;
     font-weight: 500;
     margin-right: 7px;
     font-size: 16px;
@@ -16970,8 +16970,8 @@ ul.footer-social li {
 }
 
 .social a {
-    /*background: #e21190;*/
-    background: #e21190;
+    /*background: #d90055;*/
+    background: #d90055;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -16996,14 +16996,14 @@ ul.footer-social li {
 }
 
 .social a:hover i {
-    color: #e21190;
+    color: #d90055;
 }
 
 .cta {
     padding: 20px 50px;
     border-radius: 5px;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.07);
-    background-color: #e21190;
+    background-color: #d90055;
     /* background-image: url(../images/flower-bg.svg); */
     background-repeat: no-repeat;
     background-position: right top;
@@ -17026,7 +17026,7 @@ ul.footer-social li {
 
 .cta .btn-square {
     background-color: #ffffff;
-    color: #e21190;
+    color: #d90055;
     font-weight: 700;
 }
 
@@ -17037,8 +17037,8 @@ ul.footer-social li {
 .btn-square {
     padding: 5px 20px;
     border-radius: 5px;
-    /*background-image: linear-gradient( 45deg, #e21190, #e21190, #e21190);*/
-    background-image: linear-gradient(45deg, #e21190, #e21190, #e21190);
+    /*background-image: linear-gradient( 45deg, #d90055, #d90055, #d90055);*/
+    background-image: linear-gradient(45deg, #d90055, #d90055, #d90055);
     font-size: 16px;
     color: #fff;
     text-transform: uppercase;
@@ -17106,7 +17106,7 @@ ul.footer-social li {
 
 .cta .btn-square {
     background-color: #ffffff;
-    color: #e21190;
+    color: #d90055;
     font-weight: 700;
 }
 
@@ -17145,7 +17145,7 @@ ul.footer-social li {
 }
 
 #return-to-top {
-    background: #e21190;
+    background: #d90055;
     bottom: 20px;
     cursor: pointer;
     display: none;

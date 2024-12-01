@@ -17359,7 +17359,7 @@ body {
 }
 
 .mobile-view-tab-selected {
-    background-color: #e21190 !important;
+    background-color: #d90055 !important;
 }
 
 .home-bg {
@@ -17723,7 +17723,7 @@ label {
 .profile-detail-header i {
     font-size: 2.2em;
     float: left;
-    color: #e21190;
+    color: #d90055;
 }
 
 .profile-detail-header span {
@@ -17732,7 +17732,7 @@ label {
     top: 2px;
     left: 0px;
     position: relative;
-    color: #e21190;
+    color: #d90055;
 }
 
 .profile-detail-body {
@@ -19332,8 +19332,8 @@ h4 {
     z-index: 2;
     color: #fff;
     cursor: default;
-    background-color: #e21190;
-    border-color: #e21190;
+    background-color: #d90055;
+    border-color: #d90055;
 }
 
 button.close {
@@ -19556,11 +19556,11 @@ button.close {
 }
 
 .form-check-input:checked {
-    /* background-color: #e21190;
-    border-color: #e21190;*/
+    /* background-color: #d90055;
+    border-color: #d90055;*/
 
-    background-color: #e21190;
-    border-color: #e21190;
+    background-color: #d90055;
+    border-color: #d90055;
 }
 
 
@@ -19585,8 +19585,8 @@ button.close {
 }
 
 .page-item.active .page-link {
-    background-color: #e21190 !important;
-    border-color: #e21190 !important;
+    background-color: #d90055 !important;
+    border-color: #d90055 !important;
 }
 
 .register-title-left {
@@ -19685,12 +19685,12 @@ button.close {
 
 
 .theme-backcolor {
-    /* background-color: #e21190;*/
-    background-color: #e21190;
+    /* background-color: #d90055;*/
+    background-color: #d90055;
 }
 
 .theme-color {
-    color: #e21190;
+    color: #d90055;
 }
 
 .message-list-date-col-minwidth {
@@ -19730,7 +19730,7 @@ button.close {
     background-color: whitesmoke !important;
 }
 #notificationCount {
-    background-color: #e21190 !important;
+    background-color: #d90055 !important;
     color: #fff !important;
 }
 .menu-item-create-profile {
@@ -19748,12 +19748,12 @@ button.close {
 
 .navbar-backcolor {
     background: rgb(226 17 144) !important;
-    /*background-image: linear-gradient( 45deg, #e21190, #e21190, #e21190) !important;*/
+    /*background-image: linear-gradient( 45deg, #d90055, #d90055, #d90055) !important;*/
 }
 
 /* ------------------------------------- Start: Love red color (Monogram color)------------------------------------------------*/
 .navbar-backcolor {
-    background-image: linear-gradient(45deg, #e21190, #e21190, #e21190);
+    background-image: linear-gradient(45deg, #d90055, #d90055, #d90055);
 }
 
 .navbar-backcolor {}
@@ -19800,7 +19800,7 @@ button.close {
 
 
 .navbar-chatarea-backcolor {
-    background-color: #e21190;
+    background-color: #d90055;
 }
 
 .navbar-back {
@@ -19872,7 +19872,7 @@ ul.mobile-header li .m-h-t {
 .nav-pills .show>.nav-link {
     color: #444 !important;
     background-color: inherit !important;
-    border-bottom: 2px solid #e21190;
+    border-bottom: 2px solid #d90055;
     border-radius: 0;
 }
 
@@ -19892,7 +19892,7 @@ ul.mobile-header li .m-h-t {
 }
 
 .footer-icon i {
-    color: #e21190;
+    color: #d90055;
     font-weight: 500;
     margin-right: 7px;
     font-size: 16px;
@@ -19990,8 +19990,8 @@ ul.footer-social li {
 }
 
 .social a {
-    /*background: #e21190;*/
-    background: #e21190;
+    /*background: #d90055;*/
+    background: #d90055;
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -20016,14 +20016,14 @@ ul.footer-social li {
 }
 
 .social a:hover i {
-    color: #e21190;
+    color: #d90055;
 }
 
 .cta {
     padding: 20px 50px;
     border-radius: 5px;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.07);
-    background-color: #e21190;
+    background-color: #d90055;
     background-image: url(../images/flower-bg.svg);
     background-repeat: no-repeat;
     background-position: right top;
@@ -20046,7 +20046,7 @@ ul.footer-social li {
 
 .cta .btn-square {
     background-color: #ffffff;
-    color: #e21190;
+    color: #d90055;
     font-weight: 700;
 }
 
@@ -20057,8 +20057,8 @@ ul.footer-social li {
 .btn-square {
     padding: 5px 20px;
     border-radius: 5px;
-    /*background-image: linear-gradient( 45deg, #e21190, #e21190, #e21190);*/
-    background-image: linear-gradient(45deg, #e21190, #e21190, #e21190);
+    /*background-image: linear-gradient( 45deg, #d90055, #d90055, #d90055);*/
+    background-image: linear-gradient(45deg, #d90055, #d90055, #d90055);
     font-size: 16px;
     color: #fff;
     text-transform: uppercase;
@@ -20126,7 +20126,7 @@ ul.footer-social li {
 
 .cta .btn-square {
     background-color: #ffffff;
-    color: #e21190;
+    color: #d90055;
     font-weight: 700;
 }
 
@@ -20165,7 +20165,7 @@ ul.footer-social li {
 }
 
 #return-to-top {
-    background: #e21190;
+    background: #d90055;
     bottom: 20px;
     cursor: pointer;
     display: none;
@@ -20392,7 +20392,7 @@ ul.footer-social li {
     -webkit-box-shadow: 0 4px 6px -6px #777;
     -moz-box-shadow: 0 4px 6px -6px #777;
     box-shadow: 0 4px 6px -6px #777;
-    background-color: #e21190;
+    background-color: #d90055;
     color: #fff;
 }
 

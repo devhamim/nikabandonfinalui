@@ -123,7 +123,7 @@
                     <i class="icon-left-open-big" style="position: absolute; right: 0px; top: 2px; font-size: 24px;" onclick="closeSideDrawer()"></i>
                     <div>
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" style="height:80px;">
+                            <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" style="height:80px;">
                         </a>
                     </div>
                     <div>
@@ -199,7 +199,7 @@
         <div class="container navbar-back">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand" style="padding:0px; padding-left:0px;">
-                    <img src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" class="bm-logo" alt="Logo" >
+                    <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" class="bm-logo" alt="Logo" >
                 </a>
                 <span class="activation-status" style="color: #fff; font-style: italic;"></span>
             </div>

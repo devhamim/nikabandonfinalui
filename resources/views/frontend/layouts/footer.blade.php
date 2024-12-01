@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6  col-lg-3 mb-4 mb-lg-0">
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" >
+                        <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->black_logo }}" alt="Logo" >
                     </a>
                     <p>{{ $setting->first()->about }}</p>
                 </div>
