@@ -123,7 +123,7 @@
                     <i class="icon-left-open-big" style="position: absolute; right: 0px; top: 2px; font-size: 24px;" onclick="closeSideDrawer()"></i>
                     <div>
                         <a href="{{ url('/') }}">
-                            <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" style="height:80px;">
+                            <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->black_logo }}" alt="Logo" style="height:80px;">
                         </a>
                     </div>
                     <div>
@@ -156,8 +156,15 @@
                         <div class="navbar-toggler-icon m-h-i"></div>
                     </a>
                 </div>
-                <div class="m-h-column m-h-col-middle" style="float:left;">
-                    <h5 class="m-h-title" style="text-align:center; color: #fff;"><a href="{{ url('/') }}"><strong class="text-white" style="font-size: 18px">Nikahbandhan.com</strong></a></h5>
+                <div class="m-h-column m-h-col-middle" style="text-align:center;">
+                    {{-- <h5 class="m-h-title" style="text-align:center; color: #fff;">
+                        <a href="{{ url('/') }}">
+                            <strong class="text-white" style="font-size: 18px">Nikahbandhan.com</strong>
+                        </a>
+                    </h5> --}}
+                    <a href="{{ url('/') }}" style="text-align:center;">
+                        <img width="170px" src="{{ asset('uploads/setting') }}/{{ $setting->first()->white_logo }}" alt="Logo" >
+                    </a>
                 </div>
                 @if(Auth::guard('customer')->user())
                     <div class="nav-item dropdown m-h-column m-h-col-right" style="text-align:right; float:left;">
