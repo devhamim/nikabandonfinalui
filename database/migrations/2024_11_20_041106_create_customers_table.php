@@ -70,7 +70,7 @@ return new class extends Migration
             $table->string('partner_working_sector')->nullable();
             $table->string('email_verified_at')->nullable();
             $table->string('username')->nullable();
-            $table->string('pay_active')->nullable();
+            $table->string('pay_active')->default(0);
             $table->string('addedby_id')->nullable();
             $table->string('editedby_id')->nullable();
             $table->string('final_check')->nullable();

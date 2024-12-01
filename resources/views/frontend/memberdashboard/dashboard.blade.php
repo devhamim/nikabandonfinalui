@@ -343,7 +343,7 @@
                                                                     @foreach($recentmember as $key => $member)
                                                                         <div class="col-lg-3">
                                                                             <div class="grid-item" style="width: 168px;"> 
-                                                                                <a style="text-decoration: none;" href="/search/profile?id=91826799-9a18-4e6e-bb4e-6aa0d42064f0" tabindex="-1">
+                                                                                <a style="text-decoration: none;" href="{{ route('member.profile', $member->username) }}" tabindex="-1">
                                                                                     <div class="grid-item-image text-center">
                                                                                         @if($member->gender == 'male')  
                                                                                             <img src="{{ asset('frontend') }}/images/no-photo-male.jpg" class="undefined" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;"> 
@@ -353,9 +353,19 @@
                                                                                         @endif
                                                                                     </div>
                                                                                     <div class="grid-item-info">
-                                                                                        <div class="center" style="font-weight:500;">{{ $member->usernamr }}</div>
+                                                                                        <div class="center" style="font-weight:500;">
+                                                                                            @if(Auth::guard('customer')->user()->pay_active  == 1)
+                                                                                            {{ $member->candidate_name }}
+                                                                                            @else
+                                                                                            {{ $member->username }}
+                                                                                            @endif
+                                                                                        </div>
                                                                                         <div class="center" style="font-size:13px;">{{ $member->age }} years, {{ $member->height }}, {{ $member->highest_qualification }}</div>
-                                                                                        <div class="center" style="font-size:13px; margin-top:5px;"><span class="grid-item-view-details mini-p-l-0 mini-p-r-0" style="color:royalblue; font-weight:500; border-radius:12px; border:1px solid yellowgreen; padding:6px; padding-left:10px; padding-right:10px;">View Details</span></div>
+                                                                                        <div class="center" style="font-size:13px; margin-top:5px;">
+                                                                                            <a href="{{ route('member.profile', $member->username) }}">
+                                                                                                <span class="grid-item-view-details mini-p-l-0 mini-p-r-0" style="color:royalblue; font-weight:500; border-radius:12px; border:1px solid yellowgreen; padding:6px; padding-left:10px; padding-right:10px;">View Details</span>
+                                                                                            </a>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </a> 
                                                                             </div>
@@ -380,17 +390,15 @@
                         </div>
                     </div>
 
-                    <script type="text/javascript">
+                    {{-- <script type="text/javascript">
                         $(document).ready(function() {
-
-                            // Call for desktop version. For mobile viersion (Navigation drawer) its called from _Layout.cshtml
                             if ($(window).width() >= 768) {
                                 getBasicInfo();
                                 collapseLeftMenuAreas();
                             }
                         });
 
-                    </script>
+                    </script> --}}
                 </div>
             </div>
         </div>

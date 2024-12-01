@@ -16,7 +16,9 @@
                             <div class="add-photo"><a style="text-decoration: none; color: #fff;" href="/photo/managephoto">+</a></div>
                         </div>
                         <div style="border-top: 1px solid #f2f2f2; margin-top:0px; padding:10px; text-align: center;">
-                            <span>Profile ID:</span>&nbsp;<span style="font-weight: 500; color: #555;" class="profileId">{{ $customer->username }}</span>
+                            <span>Profile ID:</span>&nbsp;<span style="font-weight: 500; color: #555;" class="profileId">
+                                {{ $customer->username }}
+                            </span>
                             &nbsp;<a class="linkViewProfile" href="/search/profile/?id=e7bcf5cc-d2a9-4fa7-8085-338960adb490" style="color: royalblue; font-weight:400;"> View</a>
                             |
                             <a class="linkEditProfile" href="/account/createprofile/?UserId=e7bcf5cc-d2a9-4fa7-8085-338960adb490&amp;Type=update" style="color: royalblue; font-weight: 400;"> Edit</a>
@@ -25,7 +27,7 @@
                             <span>Account Type:</span><span style="padding-left: 5px; font-weight: 500; color: #555; font-size: 15px;" class="membershipName">FREE Member</span>
                             <div style="padding-left:5px; color: orangered;" class="membershipExpireDate"></div>
                             <div style="margin: 5px;" class="messageBalance">Message Balance: <b>3</b></div>
-                            <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px;" href="/payment/membershipplan">Upgrade Now</a></div>
+                            <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
                         </div>
                     </div>
                     {{-- <div class="filter-container" style="margin-top:10px;">
@@ -65,19 +67,38 @@
                     </div> --}}
                     <div class="filter-container">
                         <div class="filter-header mybm-account-header">
+                            <span><i class="icon-user-1"></i>&nbsp;Pages</span>
+                            <span style="float:right;"><i class="mybm-account-icon icon-plus-3"></i></span>
+                        </div>
+                        <div class="filter-content mybm-account-content" style="display: none;">
+                            <ul class="ul-list-container padd-top-0">
+                                <li class="inner-list-container"><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
+                                
+                                <li class="inner-list-container"><a href="{{ route('premium.package') }}"><i class="fa fa-certificate"></i> Membership Plans</a></li>
+                                <li class="inner-list-container"><a href="{{ route('about.us') }}"><i class="fa fa-at"></i> About Us</a></li>
+                                <li class="inner-list-container"><a href="{{ route('mission.vision') }}"><i class="fa fa-search"></i>Mission Vision</a></li>
+                                <li class="inner-list-container"><a href="{{ asset('frontend') }}/corporate/termsofuse.html"><i class="fa fa-check-square"></i> Terms & Conditions</a></li>
+                                <li class="inner-list-container"><a href="{{ asset('frontend') }}/corporate/privacypolicy.html"><i class="fa fa-unlock-alt"></i> Privacy Policy</a></li>
+                                <li class="inner-list-container"><a href="{{ route('contect') }}"><i class="fa fa-envelope"></i> Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-container">
+                        <div class="filter-header mybm-account-header">
                             <span><i class="icon-user-1"></i>&nbsp;My Profile</span>
                             <span style="float:right;"><i class="mybm-account-icon icon-plus-3"></i></span>
                         </div>
                         <div class="filter-content mybm-account-content" style="display: none;">
                             <ul class="ul-list-container padd-top-0">
+                                <li class="inner-list-container" id="editProfile"><a class="linkEditProfile" href="{{ url('/') }}"><i class="icon-photo"></i> Dashboard</a></li>
                                 <li class="inner-list-container" id="editProfile"><a class="linkEditProfile" href="{{ route('profile.update') }}"><i class="icon-edit"></i> Edit My Profile</a></li>
-                                <li class="inner-list-container" id="changePhoto"><a href="/photo/managephoto"><i class="icon-photo"></i> Add/Change Photo</a></li>
-                                <li class="inner-list-container" id="changeNid"><a href="/verification/documents"><i class="icon-photo"></i> My NID</a></li>
-                                <li class="inner-list-container" id="editPartner"><a class="linkEditPartnerPreference" href="/account/partnerpreference/?UserId=e7bcf5cc-d2a9-4fa7-8085-338960adb490&amp;Type=update&amp;partnerGender=female"><i class="icon-edit-1"></i> Edit Partner Preference</a></li>
-                                <li class="inner-list-container padd-top-0" id="viewProfile" style="border-bottom: 0;"><a class="linkViewProfile" href="/search/profile/?id=e7bcf5cc-d2a9-4fa7-8085-338960adb490"><i class="icon-eye-4" style="font-size: 15px; position: relative; left: -1px;"></i> View My Profile</a></li>
+                                <li class="inner-list-container" id="changePhoto"><a href="{{ route('member.manage.photo') }}"><i class="icon-photo"></i> Add/Change Photo</a></li>
+                                <li class="inner-list-container" id="editPartner"><a class="linkEditPartnerPreference" href="{{ route('partner.preferance.view') }}"><i class="icon-edit-1"></i> Edit Partner Preference</a></li>
+                                <li class="inner-list-container padd-top-0" id="viewProfile" style="border-bottom: 0;"><a class="linkViewProfile" href="{{ route('member.profile', Auth::guard('customer')->user()->username) }}"><i class="icon-eye-4" style="font-size: 15px; position: relative; left: -1px;"></i> View My Profile</a></li>
                             </ul>
                         </div>
                     </div>
+                    
                     <div class="filter-container">
                         <div class="filter-header mybm-settings-header">
                             <span><i class="icon-cog-4"></i>&nbsp;Settings</span>
@@ -85,13 +106,13 @@
                         </div>
                         <div class="filter-content mybm-settings-content" style="display: none;">
                             <ul class="ul-list-container padd-top-0">
-                                <li class="inner-list-container"><a href="/account/changepassword"><i class="icon-lock"></i> Change Password</a></li>
+                                {{-- <li class="inner-list-container"><a href="/account/changepassword"><i class="icon-lock"></i> Change Password</a></li> --}}
                                 <li class="inner-list-container" style="border-bottom: 0;"><a href="/account/deleteaccount"><i class="icon-trash"></i> Delete My Account</a></li>
                             </ul>
                         </div>
                     </div>
                     <div style="margin-top:10px;">
-                        <div style="padding-left:15px; font-weight: 500; font-size:13px;">Hotline: +88 09613821331</div>
+                        <div style="padding-left:15px; font-weight: 500; font-size:13px;">Hotline: +88 01876674794</div>
                     </div>
                 </div>
             </div>
@@ -109,7 +130,7 @@
                         <ul class="ul-list-container padd-top-0">
                             <li class="inner-list-container"><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
                             
-                            <li class="inner-list-container"><a href="{{ asset('frontend') }}/payment/membershipplan.html"><i class="fa fa-certificate"></i> Membership Plans</a></li>
+                            {{-- <li class="inner-list-container"><a href="{{ route('premium.package') }}"><i class="fa fa-certificate"></i> Membership Plans</a></li> --}}
                             <li class="inner-list-container"><a href="{{ route('about.us') }}"><i class="fa fa-at"></i> About Us</a></li>
                             <li class="inner-list-container"><a href="{{ route('mission.vision') }}"><i class="fa fa-search"></i>Mission Vision</a></li>
                             <li class="inner-list-container"><a href="{{ asset('frontend') }}/corporate/termsofuse.html"><i class="fa fa-check-square"></i> Terms & Conditions</a></li>
@@ -136,7 +157,7 @@
                     </a>
                 </div>
                 <div class="m-h-column m-h-col-middle" style="float:left;">
-                    <h5 class="m-h-title" style="text-align:center; color: #fff;">nikahbandhan.com</h5>
+                    <h5 class="m-h-title" style="text-align:center; color: #fff;"><a href="{{ url('/') }}"><strong class="text-white" style="font-size: 18px">Nikahbandhan.com</strong></a></h5>
                 </div>
                 @if(Auth::guard('customer')->user())
                     <div class="nav-item dropdown m-h-column m-h-col-right" style="text-align:right; float:left;">
@@ -146,8 +167,8 @@
                         </span>
                         <ul class="dropdown-menu loggedInUser-dropmenu shadow" style="position: absolute; left: initial; right: 0; top: 50px; width: 200px; padding-top:0;" aria-labelledby="header-right-photo-dropdown">
                             <li style="text-align: center; font-size: 12px; padding: 5px; background-color: #f2f2f2; padding-top:10px; padding-bottom:10px; font-weight:400;">
-                                <div id="shortName" style="font-size:14px;">Libby Parsons</div>
-                                <div id="username" style="font-size:13px;">(Officiis voluptatem)</div>
+                                <div id="shortName" style="font-size:14px;">{{ Auth::guard('customer')->user()->name }}</div>
+                                <div id="username" style="font-size:13px;">(Officiis)</div>
                             </li>
                             <li class="divider" style="margin-top:0;"></li>
                             <li style="text-align: center; font-size: 12px;">
@@ -156,7 +177,7 @@
                                 </div>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="/Payment/MembershipPlan">Membership Packages</a></li>
+                            <li><a href="{{ route('premium.package') }}">Membership Packages</a></li>
                             <li class="divider"></li>
                             <li><a class="sign-out" href="{{ route('member.logout') }}">Sign out</a></li>
                         </ul>
@@ -191,8 +212,8 @@
                         </span>
                         <ul class="dropdown-menu loggedInUser-dropmenu shadow" style="position: absolute; left: initial; right: 0; top: 50px; width: 200px; padding-top:0;" aria-labelledby="header-right-photo-dropdown">
                             <li style="text-align: center; font-size: 12px; padding: 5px; background-color: #f2f2f2; padding-top:10px; padding-bottom:10px; font-weight:400;">
-                                <div id="shortName" style="font-size:14px;">Libby Parsons</div>
-                                <div id="username" style="font-size:13px;">(Officiis voluptatem)</div>
+                                <div id="shortName" style="font-size:14px;">{{ Auth::guard('customer')->user()->name }}</div>
+                                <div id="username" style="font-size:13px;">(Officiis)</div>
                             </li>
                             <li class="divider" style="margin-top:0;"></li>
                             <li style="text-align: center; font-size: 12px;">
@@ -201,7 +222,7 @@
                                 </div>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="/Payment/MembershipPlan">Membership Packages</a></li>
+                            <li><a href="{{ route('premium.package') }}">Membership Packages</a></li>
                             <li class="divider"></li>
                             <li><a class="sign-out" href="{{ route('member.logout') }}">Sign out</a></li>
                         </ul>

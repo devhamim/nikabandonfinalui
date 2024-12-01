@@ -17,17 +17,23 @@
                     </table>
 
                     <div style="border-top: 1px solid #f2f2f2; margin-top:0px; padding:5px; text-align: center;">
-                        <span>Profile ID:</span>{{ $customer->username }}<span style="font-weight: 500; color: #555;" id="profileId" class="profileId"></span>
-                        &nbsp;<a class="linkViewProfile" href="/search/profile" style="color: royalblue; font-weight:400;"> View</a>
+                        <span>Profile ID: </span>{{ $customer->username }}<span style="font-weight: 500; color: #555;" id="profileId" class="profileId"></span>
+                        &nbsp;<a class="linkViewProfile" href="{{ route('member.profile', Auth::guard('customer')->user()->username) }}" style="color: royalblue; font-weight:400;"> View</a>
                         |
-                        <a class="linkEditProfile" href="/search/profile" style="color: royalblue; font-weight: 400;"> Edit</a>
+                        <a class="linkEditProfile" href="{{ route('profile.update') }}" style="color: royalblue; font-weight: 400;"> Edit</a>
                     </div>
 
                     <div style="border-top: 1px solid #f2f2f2;padding: 10px;text-align: center;">
-                        <span style=" font-weight: 500;color: #fff;font-size: 13px;background-color: yellowgreen;padding: 10px;padding-top: 5px;padding-bottom: 5px;border-radius: 10px;" class="membershipName">Loading...</span>
+                        <span style=" font-weight: 500;color: #fff;font-size: 13px;background-color: yellowgreen;padding: 10px;padding-top: 5px;padding-bottom: 5px;border-radius: 10px;" class="membershipName">
+                            @if(Auth::guard('customer')->user()->pay_active == 1)
+                                Premium
+                            @else
+                                FREE Member
+                            @endif
+                        </span>
                         <div style="margin: 5px; font-weight: 400; color: orangered;" class="membershipExpireDate"></div>
                         <div style="margin: 5px;" class="messageBalance"></div>
-                        <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px; font-weight:400; padding: 3px;" href="/Payment/MembershipPlan">Upgrade Now</a></div>
+                        <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px; font-weight:400; padding: 3px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
                     </div>
                 </div>
             </div>
@@ -65,10 +71,10 @@
                     <ul class="ul-list-container padd-top-0">
                         <li class="inner-list-container border-top-0" id="editProfile"><a class="linkEditProfile" href="{{ url('/') }}">Dashboard</a></li>
                         <li class="inner-list-container border-top-0" id="editProfile"><a class="linkEditProfile" href="{{ route('profile.update') }}">Edit My Profile</a></li>
-                        {{-- <li class="inner-list-container" id="changePhoto"><a href="/photo/managephoto">Add/Change Photo</a></li>
-                        <li class="inner-list-container" id="changeNid"><a href="/verification/documents">My NID</a></li>
-                        <li class="inner-list-container" id="editPartner"><a class="linkEditPartnerPreference" href="/account/partnerpreference">Edit Partner Preference</a></li>
-                        <li class="inner-list-container" id="viewProfile"><a class="linkViewProfile" href="/search/profile">View My Profile</a></li> --}}
+                        <li class="inner-list-container" id="changePhoto"><a href="{{ route('member.manage.photo') }}">Add/Change Photo</a></li>
+                        {{-- <li class="inner-list-container" id="changeNid"><a href="/verification/documents">My NID</a></li> --}}
+                        <li class="inner-list-container" id="editPartner"><a class="linkEditPartnerPreference" href="{{ route('partner.preferance.view') }}">Edit Partner Preference</a></li>
+                        <li class="inner-list-container" id="viewProfile"><a class="linkViewProfile" href="{{ route('member.profile', Auth::guard('customer')->user()->username) }}">View My Profile</a></li>
                     </ul>
                 </div>
             </div>

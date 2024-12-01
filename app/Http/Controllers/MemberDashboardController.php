@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\package;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,4 +82,52 @@ class MemberDashboardController extends Controller
     
         return back()->with('success', 'Profile completed successfully!');
     }
+
+    //member_profile
+    function member_profile($username){
+        $customer = Customer::where('username', $username)->first();
+        $customer->age = Carbon::parse($customer->date_of_birth)->age;
+
+        return view('frontend.memberdashboard.memberprofile',[
+            'customer'=>$customer,
+        ]);
+    }
+    // partner_preferance_view
+    function partner_preferance_view(){
+        return view('frontend.memberdashboard.partner_preferences');
+    }
+
+    //partner_preferences_update
+    function partner_preferences_update(Request $request){
+        $validatedData = $request->validate([
+            'partner_gender' => 'required',
+            'age_from' => 'required',
+            'age_to' => 'nullable',
+            'height_from' => 'nullable',
+            'height_to' => 'nullable',
+            'partner_marital_status' => 'nullable',
+            'partner_bodytype' => 'nullable',
+            'partner_complexion' => 'nullable',
+            'partner_education' => 'nullable',
+            'partner_profession' => 'nullable',
+            'partner_working_sector' => 'nullable',
+        ]);
+    
+        $user = Auth::guard('customer')->user();
+        if(!$user){
+            return redirect('/');
+        }
+        $user->update($validatedData);
+    
+        return redirect('/')->with('success', 'Profile completed successfully!');
+    }
+
+    // premium_package
+    function premium_package(){
+        $packages = package::where('status', 1)->get();
+        return view('frontend.memberdashboard.packageview',[
+            'packages'=>$packages,
+        ]);
+    }
+
 }

@@ -8,29 +8,42 @@
             </div>
         </div>
         <div class="hero-form">
-            <form>
+            <form action="{{ route('member.register') }}" method="POST">
+                @csrf
                 <div class="form-wrapper">
                     <div class="select width-100p">
                         <label>Name</label>
                         <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required class="form-control form-group-margin">
+                        @error('name')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="select width-100p">
                         <label>Email</label>
                         <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required class="form-control form-group-margin">
+                        @error('email')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="select width-100p">
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Password" required class="form-control form-group-margin">
+                        @error('password')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="select width-100p">
                         <label>Created By</label>
-                        <select id="profession" name="created_by" required class="form-control form-group-margin form-select">
+                        <select id="profession" name="profile_created_by" required class="form-control form-group-margin form-select">
                             <option selected value="Self">Self</option>
                             <option value="Parents">Parents</option>
                             <option value="Brother">Brother</option>
                             <option value="Sister">Sister</option>
                             <option value="Relative">Relative</option>
                         </select>
+                        @error('profile_created_by')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="select width-100p">
                         <button type="submit" class="btn-square text-capitalize" style="padding: 4px 20px;">Submit</button>

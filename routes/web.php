@@ -12,6 +12,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberDashboardController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ReviewController;
@@ -71,6 +72,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::resource('stories', StoresController::class);
     Route::resource('videos', VideoController::class);
     Route::resource('album', AlbumController::class);
+    Route::resource('package', PackageController::class);
 
     // addtional page
     Route::resource('about', AboutController::class);
@@ -106,5 +108,9 @@ Route::post('/manage/photo/store', [CustomerDashboardController::class, 'manage_
 Route::group(['prefix' => 'member'], function(){
     Route::get('/profile/update', [MemberDashboardController::class, 'profile_update'])->name('profile.update');
     Route::post('/profile/update/store', [MemberDashboardController::class, 'profile_update_store'])->name('profile.update.store');
+    Route::get('/member/profile/{username}', [MemberDashboardController::class, 'member_profile'])->name('member.profile');
+    Route::get('/partner/preferance/view', [MemberDashboardController::class, 'partner_preferance_view'])->name('partner.preferance.view');
+    Route::post('/partner/preferences/update', [MemberDashboardController::class, 'partner_preferences_update'])->name('partner.preferences.update');
+    Route::get('/premium/package', [MemberDashboardController::class, 'premium_package'])->name('premium.package');
 });
 

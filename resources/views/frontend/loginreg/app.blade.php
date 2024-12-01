@@ -18,37 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="if(media!='all')media='all'">
 
     <link href="{{ asset('frontend') }}/css/site.min.css" rel="stylesheet" />
-        
+
     <!--SignalR needed-->
     <link href="{{ asset('frontend') }}/css/chat-style6de2.css?v=010219" rel="stylesheet" />
     <link href="{{ asset('frontend') }}/css/JqueryUI/themes/base/jquery.ui.all.css" rel="stylesheet" />
-    <script type="text/javascript">
-
-        // Call for mobile version (Navigation Drawer). For desktop viersion its called from _Layout_MyPage.cshtml
-        $(document).ready(function () {
-            if ($(window).width() < 768) {
-
-                var userStatus = getUserStatus();
-                if (userStatus && userStatus.isLoggedIn) {
-                    getBasicInfo();
-                }
-
-                collapseLeftMenuAreas();
-            }
-        });
-
-        function openSideDrawer() {
-            $(".side-drawer").css('left', 0);
-            $(".side-drawer-void").addClass("d-block");
-            $(".side-drawer-void").removeClass("d-none");
-        }
-
-        function closeSideDrawer() {
-            $(".side-drawer").css('left', -300);
-            $(".side-drawer-void").addClass("d-none");
-            $(".side-drawer-void").removeClass("d-block");
-        }
-    </script>
             <!-- Meta Pixel Code -->
          @if ($setting->first()->fb_pixel != null)
             {!! $setting->first()->fb_pixel !!}
@@ -64,7 +37,27 @@
         .video-box img{
             width: 100%;
         }
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+    
+        .side-drawer-void {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
+        }
     </style>
+
 </head>
 
 <body>
@@ -89,6 +82,46 @@
         <script src="{{ asset('frontend') }}/js/site-library.min.js"></script>
         <script src="{{ asset('frontend') }}/js/site.min.js"></script>
     
-
+        {{-- <script type="text/javascript">
+            $(document).ready(function () {
+                if ($(window).width() < 768) {
+    
+                    var userStatus = getUserStatus();
+                    if (userStatus && userStatus.isLoggedIn) {
+                        getBasicInfo();
+                    }
+    
+                    collapseLeftMenuAreas();
+                }
+            });
+    
+            function openSideDrawer() {
+                $(".side-drawer").css('left', 0);
+                $(".side-drawer-void").addClass("d-block");
+                $(".side-drawer-void").removeClass("d-none");
+            }
+    
+            function closeSideDrawer() {
+                $(".side-drawer").css('left', -300);
+                $(".side-drawer-void").addClass("d-none");
+                $(".side-drawer-void").removeClass("d-block");
+            }
+        </script> --}}
+        <script type="text/javascript">
+            function openSideDrawer() {
+                $(".side-drawer").css('left', '0');
+                $(".side-drawer-void").addClass("d-block").removeClass("d-none");
+            }
+        
+            function closeSideDrawer() {
+                $(".side-drawer").css('left', '-300px');
+                $(".side-drawer-void").addClass("d-none").removeClass("d-block");
+            }
+        
+            // Optional: Ensure default state on load
+            $(document).ready(function () {
+                closeSideDrawer();
+            });
+        </script>
 </body>
 </html>

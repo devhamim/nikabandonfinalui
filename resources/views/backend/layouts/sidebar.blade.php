@@ -60,6 +60,13 @@
                         <span class="nav-text">Experience</span>
                     </a>
                 </li>
+                <!-- Premium Package list -->
+                <li>
+                    <a class="sidenav-item-link" href="{{ route('package.index') }}">
+                        <i class="mdi mdi-cart"></i>
+                        <span class="nav-text">Premium Package</span>
+                    </a>
+                </li>
                 <!-- clients list -->
                 <li>
                     <a class="sidenav-item-link" href="{{ route('clients.index') }}">
