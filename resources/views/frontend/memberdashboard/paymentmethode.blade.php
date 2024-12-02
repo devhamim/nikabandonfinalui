@@ -64,7 +64,7 @@
                                         <div class="row">
                                             <h6 class="col-sm-3 m-ta-l" style="text-align:right;">Name:</h6>
                                             <div class="col-sm-8">
-                                                <input id="name" name="name" type="text" class="form-control" required>
+                                                <input id="name" name="name" type="text" value="{{ Auth::guard('customer')->user()->name }}" readonly class="form-control" required>
                                             </div>
                                         </div>
                                     </div>

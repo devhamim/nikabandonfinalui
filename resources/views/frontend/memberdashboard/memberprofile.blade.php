@@ -27,13 +27,21 @@
                                     <div style="text-align:center;">
                                         <div style="border: 1px solid #dcdcdc; position: relative;">
                                             <div style="padding:0px; text-align:center;" class="-border photo-container">
-                                                @if($customer->gender == 'male')
-                                                    <img alt="profile photo" src="{{ asset('frontend') }}/images/no-photo-male.jpg" class="" style="width: 100%;" />
+                                                @if($customer->image != null)
+                                                <style>
+                                                    .blur-effect {
+                                                        filter: blur(5px);
+                                                    }
+                                                </style>
+                                                <img alt="profile photo" src="{{ asset('uploads/memberimage') }}/{{ $customer->first_image }}" class="{{ Auth::guard('customer')->user()->pay_active == 0 ? 'blur-effect' : '' }}" style="width: 100%;" />                 
+                                                @else
+                                                    @if($customer->gender == 'male')
+                                                        <img alt="profile photo" src="{{ asset('frontend') }}/images/no-photo-male.jpg" class="" style="width: 100%;" />
+                                                    @endif
+                                                    @if($customer->gender == 'female')
+                                                        <img alt="profile photo" src="{{ asset('frontend') }}/images/no-photo-female.jpg" class="" style="width: 100%;" />
+                                                    @endif
                                                 @endif
-                                                @if($customer->gender == 'female')
-                                                    <img alt="profile photo" src="{{ asset('frontend') }}/images/no-photo-female.jpg" class="" style="width: 100%;" />
-                                                @endif
-                                                
                                                 <div style="display:none; left: 16px; top: 7px; cursor:default;" title="userProfile.MembershipPackageName}} Member" class="userProfile.MembershipPackageName}}-batch">
                                                     <img alt="membership package bronze" class="package-batch" src="/Images/medal_bronze.png" /><span class="package-text">Member</span><img style="height:19px;" alt="membership package" src="/Images/userProfile.MembershipPackageName}}-batch-right-shape.png" />
                                                 </div>

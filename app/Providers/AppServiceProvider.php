@@ -108,12 +108,26 @@ class AppServiceProvider extends ServiceProvider
             $view->with('setting', Setting::all());
         });
         // member sitebar
-        View::composer('frontend.memberdashboard.sitebar', function ($view){
-            $view->with('customer', Auth::guard('customer')->user());
+        View::composer('frontend.memberdashboard.sitebar', function ($view) {
+            $customer = Auth::guard('customer')->user();
+        
+            if ($customer) {
+                $images = json_decode($customer->image, true);
+                $customer->first_image = $images[0] ?? null;
+            }
+        
+            $view->with('customer', $customer);
         });
         // member header
-        View::composer('frontend.loginreg.header', function ($view){
-            $view->with('customer', Auth::guard('customer')->user());
+        View::composer('frontend.loginreg.header', function ($view) {
+            $customer = Auth::guard('customer')->user();
+        
+            if ($customer) {
+                $images = json_decode($customer->image, true);
+                $customer->first_image = $images[0] ?? null;
+            }
+        
+            $view->with('customer', $customer);
         });
     }
 }

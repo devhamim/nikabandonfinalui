@@ -12,22 +12,40 @@
                         <a href="{{ route('member.logout') }}" style="position:absolute; top:2px; left: 5px;">Sign out</a>
                         <i class="icon-left-open-big" style="position: absolute; right: 0px; top: 2px; font-size: 24px;" onclick="closeSideDrawer()"></i>
                         <div class="center" style="height: 110px;">
-                            <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-male.jpg" style="width: 80px; height: 80px; border-radius: 50%; border:1px solid #dcdcdc;">
-                            <div class="add-photo"><a style="text-decoration: none; color: #fff;" href="/photo/managephoto">+</a></div>
+                            @if($customer->image != null)
+                                <img class="mybm-profile-photo" alt="" src="{{ asset('uploads/memberimage') }}/{{ $customer->first_image }}" style="width: 80px; height: 80px; border-radius: 50%; border:1px solid #dcdcdc;">   
+                            @else
+                                @if($customer->gender == 'male')
+                                    <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-male.jpg" style="width: 80px; height: 80px; border-radius: 50%; border:1px solid #dcdcdc;">
+                                @endif
+                                @if($customer->gender == 'female')
+                                    <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-female.jpg" style="width: 80px; height: 80px; border-radius: 50%; border:1px solid #dcdcdc;">
+                                @endif
+                            @endif
+                            <div class="add-photo"><a style="text-decoration: none; color: #fff;" href="{{ route('member.manage.photo') }}">+</a></div>
                         </div>
                         <div style="border-top: 1px solid #f2f2f2; margin-top:0px; padding:10px; text-align: center;">
                             <span>Profile ID:</span>&nbsp;<span style="font-weight: 500; color: #555;" class="profileId">
                                 {{ $customer->username }}
                             </span>
-                            &nbsp;<a class="linkViewProfile" href="/search/profile/?id=e7bcf5cc-d2a9-4fa7-8085-338960adb490" style="color: royalblue; font-weight:400;"> View</a>
+                            &nbsp;<a class="linkViewProfile" href="{{ route('member.profile', Auth::guard('customer')->user()->username) }}" style="color: royalblue; font-weight:400;"> View</a>
                             |
-                            <a class="linkEditProfile" href="/account/createprofile/?UserId=e7bcf5cc-d2a9-4fa7-8085-338960adb490&amp;Type=update" style="color: royalblue; font-weight: 400;"> Edit</a>
+                            <a class="linkEditProfile" href="{{ route('profile.update') }}" style="color: royalblue; font-weight: 400;"> Edit</a>
                         </div>
                         <div style="border-top: 1px solid #f2f2f2;padding: 5px;text-align: center;">
-                            <span>Account Type:</span><span style="padding-left: 5px; font-weight: 500; color: #555; font-size: 15px;" class="membershipName">FREE Member</span>
+                            <span>Account Type:</span><span style="padding-left: 5px; font-weight: 500; color: #555; font-size: 15px;" class="membershipName">
+                                @if(Auth::guard('customer')->user()->pay_active == 1)
+                                    Premium
+                                @else
+                                    FREE Member
+                                @endif
+                            </span>
                             <div style="padding-left:5px; color: orangered;" class="membershipExpireDate"></div>
-                            <div style="margin: 5px;" class="messageBalance">Message Balance: <b>3</b></div>
-                            <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
+                            {{-- <div style="margin: 5px;" class="messageBalance">Message Balance: <b>3</b></div> --}}
+                            @if(Auth::guard('customer')->user()->pay_active == 0)
+                                <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
+                            @endif
+                            
                         </div>
                     </div>
                     {{-- <div class="filter-container" style="margin-top:10px;">
@@ -107,12 +125,14 @@
                         <div class="filter-content mybm-settings-content" style="display: none;">
                             <ul class="ul-list-container padd-top-0">
                                 {{-- <li class="inner-list-container"><a href="/account/changepassword"><i class="icon-lock"></i> Change Password</a></li> --}}
-                                <li class="inner-list-container" style="border-bottom: 0;"><a href="/account/deleteaccount"><i class="icon-trash"></i> Delete My Account</a></li>
+                                {{-- <li class="inner-list-container" style="border-bottom: 0;"><a href="/account/deleteaccount"><i class="icon-trash"></i> Delete My Account</a></li> --}}
+
+                                <li class="inner-list-container" style="border-bottom: 0;"><a href="{{ route('member.logout') }}"><i class="icon-trash"></i> Logout</a></li>
                             </ul>
                         </div>
                     </div>
                     <div style="margin-top:10px;">
-                        <div style="padding-left:15px; font-weight: 500; font-size:13px;">Hotline: +88 01876674794</div>
+                        <div style="padding-left:15px; font-weight: 500; font-size:13px;">Hotline: {{ $setting->first()->number_one }}</div>
                     </div>
                 </div>
             </div>
@@ -143,7 +163,7 @@
                         <a href="{{ route('member.login') }}" style="margin-left: 10px; background-color: #0d6efd; border-color: #0d6efd;" class="btn-square btn-square-medium text-capitalize btn-square-2">Login</a>
                     </div>
                     <div style="margin-top:10px;">
-                        <div style="font-weight: 500; font-size:13px;">Hotline: +88 01876674794</div>
+                        <div style="font-weight: 500; font-size:13px;">Hotline: {{ $setting->first()->number_one }}</div>
                     </div>
                 </div>
             </div>
@@ -169,7 +189,18 @@
                 @if(Auth::guard('customer')->user())
                     <div class="nav-item dropdown m-h-column m-h-col-right" style="text-align:right; float:left;">
                         <span style="text-align: center;color: #fff;" class="dropdown-toggle cursor-pointer header-profile-photo-container" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown" id="header-right-photo-dropdown">
-                            <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-male.jpg">
+
+                            @if($customer->image != null)
+                                <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('uploads/memberimage') }}/{{ $customer->first_image }}">
+                            @else
+                                @if($customer->gender == 'male')
+                                    <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-male.jpg">
+                                @endif
+                                @if($customer->gender == 'female')
+                                    <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-female.jpg">
+                                @endif
+                            @endif
+                            
                             <b class="caret" style="color: #fff;"></b>
                         </span>
                         <ul class="dropdown-menu loggedInUser-dropmenu shadow" style="position: absolute; left: initial; right: 0; top: 50px; width: 200px; padding-top:0;" aria-labelledby="header-right-photo-dropdown">
@@ -214,7 +245,16 @@
                 @if(Auth::guard('customer')->user())
                     <div style="position:relative; float:right;" class="nav-item dropdown">
                         <span style="text-align: center;color: #fff;" class="dropdown-toggle cursor-pointer header-profile-photo-container" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown" id="header-right-photo-dropdown">
-                            <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-male.jpg">
+                            @if($customer->image != null)
+                                <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('uploads/memberimage') }}/{{ $customer->first_image }}">
+                            @else
+                                @if($customer->gender == 'male')
+                                    <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-male.jpg">
+                                @endif
+                                @if($customer->gender == 'female')
+                                    <img id="header-profile-photo" alt="" style="width: 46px; height: 46px; border-radius: 50%; border: 2px solid #bbb;" src="{{ asset('frontend') }}/images/no-photo-female.jpg">
+                                @endif
+                            @endif
                             <b class="caret" style="color: #fff;"></b>
                         </span>
                         <ul class="dropdown-menu loggedInUser-dropmenu shadow" style="position: absolute; left: initial; right: 0; top: 50px; width: 200px; padding-top:0;" aria-labelledby="header-right-photo-dropdown">

@@ -94,7 +94,7 @@
 
                                             <div class="row11">
 
-                                                <div class="col-lg-12 mypage-middle offer-container" style="text-align:center;">
+                                                {{-- <div class="col-lg-12 mypage-middle offer-container" style="text-align:center;">
                                                     <div class="sectionbox-container">
                                                         <div class="sectionbox-content">
                                                             <div class="bg-white">
@@ -241,7 +241,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                                 {{-- <div name="SearchProfileTag" class="col-lg-12 mypage-middle mypage-search-anchor" style="margin-top: 15px;">
                                                     <div class="sectionbox-container">
@@ -344,12 +344,22 @@
                                                                             <div class="grid-item" style="width: 168px;"> 
                                                                                 <a style="text-decoration: none;" href="{{ route('member.profile', $member->username) }}" tabindex="-1">
                                                                                     <div class="grid-item-image text-center">
-                                                                                        @if($member->gender == 'male')  
-                                                                                            <img src="{{ asset('frontend') }}/images/no-photo-male.jpg" class="undefined" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;"> 
+                                                                                        @if($member->image != null)
+                                                                                        <style>
+                                                                                            .blur-effect {
+                                                                                                filter: blur(5px);
+                                                                                            }
+                                                                                        </style>
+                                                                                        <img src="{{ asset('uploads/memberimage') }}/{{ $member->first_image }}" class="undefined {{ Auth::guard('customer')->user()->pay_active == 0 ? 'blur-effect' : '' }}" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;">                                                                                   
+                                                                                        @else
+                                                                                            @if($member->gender == 'male')  
+                                                                                                <img src="{{ asset('frontend') }}/images/no-photo-male.jpg" class="undefined" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;"> 
+                                                                                            @endif
+                                                                                            @if($member->gender == 'female')
+                                                                                                <img src="{{ asset('frontend') }}/images/no-photo-female.jpg" class="undefined" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;"> 
+                                                                                            @endif
                                                                                         @endif
-                                                                                        @if($member->gender == 'female')
-                                                                                            <img src="{{ asset('frontend') }}/images/no-photo-female.jpg" class="undefined" style="border-radius: 50%; height:100px; width:100px; border:1px solid #ccc;"> 
-                                                                                        @endif
+                                                                                        
                                                                                     </div>
                                                                                     <div class="grid-item-info">
                                                                                         <div class="center" style="font-weight:500;">
@@ -381,10 +391,6 @@
                                         </div>
                                     </div>
                                 </form>
-
-
-
-
                             </div>
                         </div>
                     </div>

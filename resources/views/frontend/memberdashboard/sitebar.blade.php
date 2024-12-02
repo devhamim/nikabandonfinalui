@@ -8,8 +8,19 @@
                         <tr>
                             <td style="vertical-align:top;">
                                 <div class="center">
-                                    <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-male.jpg" style="width: 150px; height: 150px; border-radius: 50%; border:1px solid #dcdcdc;" />
-                                    <div class="add-photo"><a style="text-decoration: none; color: #fff;" href="/photo/managephoto">+</a></div>
+                                    @if($customer->image != null)
+                                        <img class="mybm-profile-photo" alt="" src="{{ asset('uploads/memberimage') }}/{{ $customer->first_image }}" style="width: 150px; height: 150px; border-radius: 50%; border:1px solid #dcdcdc;" />        
+                                    @else
+                                        @if($customer->gender == 'male')
+                                            <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-male.jpg" style="width: 150px; height: 150px; border-radius: 50%; border:1px solid #dcdcdc;" />
+                                        @endif
+                                        @if($customer->gender == 'female')
+                                            <img class="mybm-profile-photo" alt="" src="{{ asset('frontend') }}/images/no-photo-female.jpg" style="width: 150px; height: 150px; border-radius: 50%; border:1px solid #dcdcdc;" />
+                                            
+                                        @endif
+                                    @endif
+                                    
+                                    <div class="add-photo"><a style="text-decoration: none; color: #fff;" href="{{ route('member.manage.photo') }}">+</a></div>
                                 </div>
 
                             </td>
@@ -33,7 +44,9 @@
                         </span>
                         <div style="margin: 5px; font-weight: 400; color: orangered;" class="membershipExpireDate"></div>
                         <div style="margin: 5px;" class="messageBalance"></div>
-                        <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px; font-weight:400; padding: 3px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
+                        @if(Auth::guard('customer')->user()->pay_active == 0)
+                            <div class="center" style=" padding-top: 7px; padding-bottom: 4px;"><a class="btn-square btn-square-medium text-capitalize" style="width:180px; font-weight:400; padding: 3px;" href="{{ route('premium.package') }}">Upgrade Now</a></div>
+                        @endif
                     </div>
                 </div>
             </div>

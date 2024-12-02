@@ -89,6 +89,9 @@ class MemberDashboardController extends Controller
         $customer = Customer::where('username', $username)->first();
         $customer->age = Carbon::parse($customer->date_of_birth)->age;
 
+        $images = json_decode($customer->image, true);
+        $customer->first_image = $images[0] ?? null;
+
         return view('frontend.memberdashboard.memberprofile',[
             'customer'=>$customer,
         ]);
@@ -150,6 +153,8 @@ class MemberDashboardController extends Controller
             'message' => 'nullable',
         ]);
         $user = Auth::guard('customer')->user();
+
+        $validatedData['customer_id'] = $user->id;
         if(!$user){
             return redirect('/');
         }

@@ -98,6 +98,7 @@
                                                     <div class="modal-header px-4">
                                                         <h5 class="modal-title" id="exampleModalCenterTitle">Edit Payment</h5>
                                                     </div>
+                                                    <input id="customer_id" name="customer_id" value="{{ $payment->customer_id }}" type="hidden" >
                                                     <input id="packages" name="packages" value="{{ $payment->id }}" type="hidden" >
                                                     <div class="modal-body px-4">
                                                         <div class="row mb-2">

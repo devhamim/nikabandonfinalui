@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\PaymentMethord;
 use Illuminate\Http\Request;
 
@@ -73,6 +74,17 @@ class PaymentMethodeController extends Controller
         $validatedData = $request->validate($rules);
 
         $validatedData['status'] = $request->status;
+
+        if($request->status == 1){
+            $customer = Customer::where('id', $request->customer_id)->update([
+                'pay_active'=>1,
+            ]);
+        }
+        if($request->status == 0){
+            $customer = Customer::where('id', $request->customer_id)->update([
+                'pay_active'=>0,
+            ]);
+        }
 
 
         $payments->update($validatedData);

@@ -57,6 +57,8 @@ class FrontendController extends Controller
             }
             foreach ($recentmember as $member) {
                 $member->age = Carbon::parse($member->date_of_birth)->age;
+                $images = json_decode($member->image, true);
+                $member->first_image = $images[0] ?? null;
             }
             
             return view('frontend.memberdashboard.dashboard',[
