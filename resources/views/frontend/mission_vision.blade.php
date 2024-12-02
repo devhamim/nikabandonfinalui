@@ -69,12 +69,12 @@
                                                 <li>Private, personalized, and highly confidential service</li>
                                                 <li>Trusted service for more than 16 years</li>
                                             </ul>
-                                            <a class="btn-square mt-3 text-center w-60 text-capitalize" href="{{ asset('frontend') }}/search/advance.html">Find your Partner</a>
+                                            <a class="btn-square mt-3 text-center w-60 text-capitalize" href="{{ route('member.registration') }}">Find your Partner</a>
                                         </div>
                                         <div class="col-lg-6 d-block">
                                             <div class="video-box image-box">
-                                                <img class="lazyloaded" src="{{ asset('frontend') }}/images/why.jpg" data-src="/images/why.jpg" alt="Why Choose Video">
-                                                <a data-fancybox="" href="" class="video-btn"><i class="fa fa-play"></i></a>
+                                                <img class="lazyloaded" src="{{ asset('frontend') }}/images/why.jpg" alt="Why Choose Video">
+                                                <a href="https://youtube.com/shorts/Q9jeMGDjsIE?si=hBx6WSwQm7cgi7Z5" class="video-btn"><i class="fa fa-play"></i></a>
                                             </div>
                                         </div>
                                     </div>
