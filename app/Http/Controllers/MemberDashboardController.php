@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Favorite;
+use App\Models\Interested;
 use App\Models\package;
 use App\Models\PaymentMethord;
 use Carbon\Carbon;
@@ -161,6 +163,83 @@ class MemberDashboardController extends Controller
         PaymentMethord::create($validatedData);
     
         return redirect('/')->with('success', 'successfully!');
+    }
+
+    function interest_store(Request $request){
+        if($request->action == 'message'){
+            echo 'aa';
+        }
+        if($request->action == 'interested'){
+            Interested::insert([
+                'customer_id'=> $request->customer_id,
+                'sender_id'=> Auth::guard('customer')->user()->id,
+                'created_at'=> Carbon::now(),
+            ]);
+        }
+        if($request->action == 'favorite'){
+            Favorite::insert([
+                'customer_id'=> $request->customer_id,
+                'sender_id'=> Auth::guard('customer')->user()->id,
+                'created_at'=> Carbon::now(),
+            ]);
+        }
+        return back()->with('success', 'success');
+    }
+
+    // favorite_list
+    function favorite_list(){
+        $favorites = Favorite::where('sender_id', Auth::guard('customer')->user()->id)->get();
+        return view('frontend.memberdashboard.favorite_list',[
+            'favorites'=>$favorites,
+        ]);
+    }
+    // favorite_list_delete
+    function favorite_list_delete($id){
+        Favorite::find($id)->delete();
+        return back()->with('success', 'success');
+    }
+
+    // interested_sent_list
+    function interested_sent_list(){
+        $interesteds = Interested::where('sender_id', Auth::guard('customer')->user()->id)->get();
+        return view('frontend.memberdashboard.invitation_sent',[
+            'interesteds'=>$interesteds,
+        ]);
+    }
+
+    // interested_sent_delete
+    function interested_sent_delete($id){
+        Interested::find($id)->delete();
+        return back()->with('success', 'success');
+    }
+
+    // interested_received_list
+    function interested_received_list(){
+        $interesteds = Interested::where('customer_id', Auth::guard('customer')->user()->id)->get();
+        return view('frontend.memberdashboard.invitation_recived',[
+            'interesteds'=>$interesteds,
+        ]);
+    }
+
+    // interested_received_delete
+    function interested_received_delete($id){
+        Interested::find($id)->delete();
+        return back()->with('success', 'success');
+    }
+
+    // interested_accept
+    function interested_accept($id){
+        Interested::find($id)->update([
+            'status'=> 1,
+        ]);
+        return back()->with('success', 'success');
+    }
+    // interested_decline
+    function interested_decline($id){
+        Interested::find($id)->update([
+            'status'=> 2,
+        ]);
+        return back()->with('success', 'success');
     }
 
 }

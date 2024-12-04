@@ -62,19 +62,8 @@
                         <li class="inner-list-container"><a href="/message/list?Type=SendItems">Sent Messages</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="filter-container">
-                <div class="filter-header mybm-interest-header">
-                    <span>Invitations</span>
-                    <span style="float:right;"><i class="mybm-interest-icon icon-minus-3"></i></span>
-                </div>
-                <div class="filter-content mybm-interest-content">
-                    <ul class="ul-list-container padd-top-0">
-                        <li class="inner-list-container border-top-0"><a href="/interest/receivedlist">Received Invitation</a><a href="/interest/receivedlist" class="interestCounter"></a></li>
-                        <li class="inner-list-container"><a href="/interest/sendlist">Sent Invitation</a></li>
-                    </ul>
-                </div>
             </div> --}}
+            
             <div class="filter-container">
                 <div class="filter-header mybm-account-header">
                     <span>My Profile</span>
@@ -91,17 +80,33 @@
                     </ul>
                 </div>
             </div>
-            {{-- <div class="filter-container">
+            <div class="filter-container">
+                <div class="filter-header mybm-interest-header">
+                    <span>Interesteds</span>
+                    <span style="float:right;"><i class="mybm-interest-icon icon-minus-3"></i></span>
+                </div>
+                <div class="filter-content mybm-interest-content">
+                    <ul class="ul-list-container padd-top-0">
+                        <li class="inner-list-container border-top-0">
+                            <a href="{{ route('interested.received.list') }}">Received Interested</a>
+                        </li>
+                        <li class="inner-list-container">
+                            <a href="{{ route('interested.sent.list') }}">Sent Interested</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="filter-container">
                 <div class="filter-header mybm-photo-header">
                     <span>My Favorites</span>
                     <span style="float:right;"><i class="mybm-photo-icon icon-minus-3"></i></span>
                 </div>
                 <div class="filter-content mybm-photo-content">
                     <ul class="ul-list-container padd-top-0">
-                        <li class="inner-list-container border-top-0"><a href="/account/favoritelist">Favorite List</a></li>
+                        <li class="inner-list-container border-top-0"><a href="{{ route('favorite.list') }}">Favorite List</a></li>
                     </ul>
                 </div>
-            </div> --}}
+            </div>
             <div class="filter-container">
                 <div class="filter-header mybm-settings-header">
                     <span>Settings</span>

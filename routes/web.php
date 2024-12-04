@@ -116,5 +116,14 @@ Route::group(['prefix' => 'member'], function(){
     Route::get('/premium/package', [MemberDashboardController::class, 'premium_package'])->name('premium.package');
     Route::get('/payment/view/{id}', [MemberDashboardController::class, 'payment_view'])->name('payment.view');
     Route::post('/payment/methode/store', [MemberDashboardController::class, 'payment_methode_store'])->name('payment.methode.store');
+    Route::post('/interest.store', [MemberDashboardController::class, 'interest_store'])->name('interest.store');
+    Route::get('/favorite/list', [MemberDashboardController::class, 'favorite_list'])->name('favorite.list');
+    Route::get('/favorite/list/delete/{id}', [MemberDashboardController::class, 'favorite_list_delete'])->name('favorite.list.delete');
+    Route::get('/interested/sent/list', [MemberDashboardController::class, 'interested_sent_list'])->name('interested.sent.list');
+    Route::get('/interested/sent/delete/{id}', [MemberDashboardController::class, 'interested_sent_delete'])->name('interested.sent.delete');
+    Route::get('/interested/received/list', [MemberDashboardController::class, 'interested_received_list'])->name('interested.received.list');
+    Route::get('/interested/received/delete/{id}', [MemberDashboardController::class, 'interested_received_delete'])->name('interested.received.delete');
+    Route::get('/interested/accept/{id}', [MemberDashboardController::class, 'interested_accept'])->name('interested.accept');
+    Route::get('/interested/decline/{id}', [MemberDashboardController::class, 'interested_decline'])->name('interested.decline');
 });
 
